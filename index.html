@@ -371,32 +371,12 @@
               }
         
               const installBtn = document.createElement('button');
-        
+
               installBtn.id = 'installBtn';
               installBtn.type = 'button';
-              installBtn.innerHTML = '<i class="fa-solid fa-download"></i> Instalar App';
-        
-              installBtn.style.cssText = `
-                  position: fixed;
-                  bottom: 20px;
-                  right: 20px;
-                  padding: 12px 24px;
-                  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-                  color: white;
-                  border: 1px solid var(--primary-dark);
-                  border-radius: 50px;
-                  font-size: 13px;
-                  font-weight: 800;
-                  font-family: inherit;
-                  cursor: pointer;
-                  box-shadow: 0 8px 22px rgba(190, 18, 60, 0.35);
-                  z-index: 10000;
-                  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 8px;
-              `;
+              installBtn.className = 'install-app-btn';
+              installBtn.innerHTML = '<i class="fa-solid fa-download"></i> <span>Instalar App</span>';
+
         
               installBtn.addEventListener('mouseenter', () => {
                   installBtn.style.transform = 'scale(1.05) translateY(-2px)';
