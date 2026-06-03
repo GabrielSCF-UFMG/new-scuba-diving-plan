@@ -9,12 +9,12 @@
   "theme_color": "#be123c",
   "icons": [
     {
-      "src": "brasao-cbmmg.png",
+      "src": "brasao-cbmmg.png?v=2",
       "sizes": "192x192 512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
+  ]
   "categories": ["utilities", "productivity"],
   "lang": "pt-BR"
 }
