@@ -2,15 +2,16 @@
    GLOBAL VARIABLES & RESET
    ========================================== */
 :root {
-  --primary: #0f172a;        /* Slate 900 */
-  --primary-light: #1e293b;  /* Slate 800 */
-  --secondary: #0284c7;      /* Ocean Blue */
-  --secondary-hover: #0369a1;/* Darker Blue */
-  --accent: #0d9488;         /* Marine Teal */
-  --accent-hover: #0f766e;
-  --bg: #f8fafc;             /* Neutral Light Slate */
+  --primary: #be123c;          /* Vermelho CBMMG */
+  --primary-light: #e11d48;     /* Vermelho Claro */
+  --primary-dark: #881337;      /* Vermelho Escuro Carmim */
+  --secondary: #0284c7;        /* Ocean Blue */
+  --secondary-hover: #0369a1;  /* Darker Blue */
+  --accent: #d97706;           /* Dourado Operacional */
+  --accent-hover: #b45309;
+  --bg: #f8fafc;               /* Neutral Light Slate */
   --card-bg: #ffffff;
-  --text: #334155;           /* Soft Black */
+  --text: #334155;             /* Soft Black */
   --text-dark: #0f172a;
   --text-muted: #64748b;
   --border: #e2e8f0;
@@ -48,13 +49,13 @@ body {
 }
 
 /* ==========================================
-   APP HEADER
+   APP HEADER CBMMG
    ========================================== */
 .app-header {
-  background: linear-gradient(135deg, #091e3a 0%, #0f172a 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #ffffff;
   padding: 40px 24px;
-  border-bottom: 4px solid var(--secondary);
+  border-bottom: 4px solid var(--accent);
   position: relative;
   overflow: hidden;
 }
@@ -83,10 +84,14 @@ body {
   gap: 16px;
 }
 
-.icon-logo {
-  width: 44px;
-  height: 44px;
-  color: #38bdf8;
+.brasao {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: white;
+  padding: 2px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   flex-shrink: 0;
 }
 
@@ -100,7 +105,7 @@ body {
 
 .app-header .subtitle {
   font-size: 14px;
-  color: #94a3b8;
+  color: #fca5a5;
   font-weight: 500;
 }
 
@@ -145,15 +150,15 @@ body {
 }
 
 .badge-step {
-  background-color: #f0fdf4;
-  color: #15803d;
+  background-color: #fff1f2;
+  color: var(--primary);
   font-size: 11px;
   font-weight: 700;
   padding: 4px 10px;
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border: 1px solid #bbf7d0;
+  border: 1px solid #fecaca;
 }
 
 .subsection-title {
@@ -210,8 +215,8 @@ select {
 input:focus,
 select:focus {
   outline: none;
-  border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.15);
 }
 
 /* ==========================================
@@ -246,12 +251,12 @@ button:active {
 }
 
 .btn-primary {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: #ffffff;
 }
 
 .btn-primary:hover {
-  background-color: var(--secondary-hover);
+  background-color: var(--primary-dark);
 }
 
 .btn-secondary {
@@ -269,7 +274,7 @@ button:active {
 }
 
 .btn-gray:hover {
-  background-color: var(--primary);
+  background-color: var(--primary-dark);
 }
 
 /* ==========================================
@@ -507,6 +512,37 @@ tr:last-child td {
   white-space: nowrap;
 }
 
+/* INPUTS INTERATIVOS SOB O DIAGRAMA */
+.apc-input {
+  border: none;
+  border-bottom: 1.5px dashed #0284c7;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+  padding: 0;
+  height: 20px;
+  transition: all 0.15s ease-in-out;
+}
+
+.apc-input:focus {
+  outline: none;
+  border-bottom: 2px solid #0d9488;
+  background-color: #f0fdfa;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.apc-input-time {
+  width: 55px;
+}
+
+.apc-input-num {
+  width: 38px;
+}
+
 .apc-assinatura {
   margin-top: 40px;
   text-align: center;
@@ -602,5 +638,12 @@ tr:last-child td {
     padding: 0;
     box-shadow: none;
     page-break-inside: avoid;
+  }
+
+  /* Ocultar bordas tracejadas na impressão do Apêndice C */
+  .apc-input {
+    border-bottom: none !important;
+    background: transparent !important;
+    color: #000000 !important;
   }
 }
