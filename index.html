@@ -349,100 +349,92 @@
 
     <!-- PWA Installation Script -->
     <script>
-          let deferredPrompt = null;
-        
-          function registrarServiceWorker() {
-              if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', () => {
-                      navigator.serviceWorker.register('./sw.js')
-                          .then((registration) => {
-                              console.log('Service Worker registrado:', registration.scope);
-                          })
-                          .catch((error) => {
-                              console.error('Erro ao registrar Service Worker:', error);
-                          });
-                  });
-              }
-          }
-        
-          function showInstallButton() {
-              if (document.getElementById('installBtn')) {
-                  return;
-              }
-        
-              const installBtn = document.createElement('button');
-
-              installBtn.id = 'installBtn';
-              installBtn.type = 'button';
-              installBtn.className = 'install-app-btn';
-              installBtn.innerHTML = '<i class="fa-solid fa-download"></i> <span>Instalar App</span>';
-
-        
-              installBtn.addEventListener('mouseenter', () => {
-                  installBtn.style.transform = 'scale(1.05) translateY(-2px)';
-                  installBtn.style.boxShadow = '0 12px 28px rgba(190, 18, 60, 0.45)';
-                  installBtn.style.filter = 'brightness(1.05)';
+      let deferredPrompt = null;
+  
+      function registrarServiceWorker() {
+          if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('./sw.js')
+                      .then((registration) => {
+                          console.log('Service Worker registrado:', registration.scope);
+                      })
+                      .catch((error) => {
+                          console.error('Erro ao registrar Service Worker:', error);
+                      });
               });
-        
-              installBtn.addEventListener('mouseleave', () => {
-                  installBtn.style.transform = 'scale(1)';
-                  installBtn.style.boxShadow = '0 8px 22px rgba(190, 18, 60, 0.35)';
-                  installBtn.style.filter = 'none';
-              });
-        
-              installBtn.addEventListener('click', installPWA);
-        
-              document.body.appendChild(installBtn);
           }
-        
-          async function installPWA() {
-              if (!deferredPrompt) {
-                  console.log('Prompt de instalação ainda não disponível.');
-                  return;
-              }
-        
-              deferredPrompt.prompt();
-        
-              const choiceResult = await deferredPrompt.userChoice;
-        
-              console.log('Resultado da instalação:', choiceResult.outcome);
-        
+      }
+  
+      function showInstallButton() {
+          if (document.getElementById('installBtn')) {
+              return;
+          }
+  
+          const installBtn = document.createElement('button');
+  
+          installBtn.id = 'installBtn';
+          installBtn.type = 'button';
+          installBtn.className = 'install-app-btn';
+          installBtn.innerHTML = `
+              <i class="fa-solid fa-download"></i>
+              <span>Instalar App</span>
+          `;
+  
+          installBtn.addEventListener('click', installPWA);
+  
+          document.body.appendChild(installBtn);
+      }
+  
+      function removeInstallButton() {
+          const installBtn = document.getElementById('installBtn');
+  
+          if (installBtn) {
+              installBtn.remove();
+          }
+      }
+  
+      async function installPWA() {
+          if (!deferredPrompt) {
+              console.log('Prompt de instalação ainda não disponível.');
+              return;
+          }
+  
+          deferredPrompt.prompt();
+  
+          const choiceResult = await deferredPrompt.userChoice;
+  
+          console.log('Resultado da instalação:', choiceResult.outcome);
+  
+          deferredPrompt = null;
+  
+          removeInstallButton();
+      }
+  
+      function configurarInstalacaoPWA() {
+          window.addEventListener('beforeinstallprompt', (event) => {
+              event.preventDefault();
+  
+              deferredPrompt = event;
+  
+              showInstallButton();
+  
+              console.log('PWA disponível para instalação.');
+          });
+  
+          window.addEventListener('appinstalled', () => {
+              console.log('PWA instalado com sucesso.');
+  
               deferredPrompt = null;
-        
-              const installBtn = document.getElementById('installBtn');
-        
-              if (installBtn) {
-                  installBtn.remove();
-              }
-          }
-        
-          function configurarInstalacaoPWA() {
-              window.addEventListener('beforeinstallprompt', (event) => {
-                  event.preventDefault();
-        
-                  deferredPrompt = event;
-        
-                  showInstallButton();
-        
-                  console.log('PWA disponível para instalação.');
-              });
-        
-              window.addEventListener('appinstalled', () => {
-                  console.log('PWA instalado com sucesso.');
-        
-                  deferredPrompt = null;
-        
-                  const installBtn = document.getElementById('installBtn');
-        
-                  if (installBtn) {
-                      installBtn.remove();
-                  }
-              });
-          }
-        
-          registrarServiceWorker();
-          configurarInstalacaoPWA();
-   </script>
+  
+              removeInstallButton();
+          });
+      }
+  
+      registrarServiceWorker();
+      configurarInstalacaoPWA();
+    
+    </script>
+
 
 
 
