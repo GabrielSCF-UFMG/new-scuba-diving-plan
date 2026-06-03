@@ -704,11 +704,11 @@ tr:last-child td {
     justify-content: center;
     gap: 8px;
 
-    padding: 13px 24px;
-    border: 1px solid #9f1239;
+    padding: 12px 24px;
+    border: 1px solid var(--primary-dark);
     border-radius: 999px;
 
-    background: linear-gradient(135deg, #be123c, #9f1239);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: #ffffff;
 
     font-family: "Plus Jakarta Sans", Arial, sans-serif;
@@ -722,7 +722,7 @@ tr:last-child td {
 }
 
 .install-app-btn:hover {
-    transform: translateY(-2px) scale(1.04);
+    transform: scale(1.05) translateY(-2px);
     box-shadow: 0 12px 28px rgba(190, 18, 60, 0.45);
     filter: brightness(1.05);
 }
@@ -731,9 +731,8 @@ tr:last-child td {
     transform: scale(0.98);
 }
 
-@media print {
-    .install-app-btn {
-        display: none !important;
-    }
+.install-app-btn i {
+    font-size: 13px;
 }
+
 
