@@ -1,0 +1,20 @@
+{
+  "name": "Planejamento de Mergulho - CBMMG",
+  "short_name": "Mergulho",
+  "description": "Calculadora de perfis de mergulho baseada nas tabelas da Marinha",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#be123c",
+  "theme_color": "#be123c",
+  "icons": [
+    {
+      "src": "brasao-cbmmg.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "pt-BR"
+}
