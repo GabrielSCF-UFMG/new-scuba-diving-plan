@@ -685,3 +685,55 @@ tr:last-child td {
   font-weight: 600 !important;
 }
 
+/* ==========================================
+   BOTÃO INSTALAR APP - PWA
+   ========================================== */
+
+.oculto {
+    display: none !important;
+}
+
+.install-app-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 13px 24px;
+    border: 1px solid #9f1239;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #be123c, #9f1239);
+    color: #ffffff;
+
+    font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(190, 18, 60, 0.35);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.install-app-btn:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(190, 18, 60, 0.45);
+    filter: brightness(1.05);
+}
+
+.install-app-btn:active {
+    transform: scale(0.98);
+}
+
+@media print {
+    .install-app-btn {
+        display: none !important;
+    }
+}
+
