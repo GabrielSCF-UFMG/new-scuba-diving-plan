@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planejamento de Mergulho</title>
+  <title>Planejamento de Mergulho - CBMMG</title>
   
   <!-- Modern Font Integration -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +11,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#be123c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mergulho">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Ícones para Navegador e iOS -->
+  <link rel="icon" type="image/png" href="brasao-cbmmg.png">
+  <link rel="apple-touch-icon" href="brasao-cbmmg.png">
 </head>
 
 <body>
-    <!-- Premium Header Area -->
+    <!-- Premium Header Area CBMMG -->
     <header class="app-header nao-imprimir">
         <div class="header-container">
             <div class="header-logo">
-                <!-- Anchor/Diver Theme SVG Icon -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-logo">
-                    <circle cx="12" cy="5" r="3" />
-                    <path d="M12 22V8M5 12H19M5 12C5 15.866 8.134 19 12 19C15.866 19 19 15.866 19 12" />
-                </svg>
+                <img src="brasao-cbmmg.png" class="brasao" alt="Brasão CBMMG" />
                 <div>
                     <h1>Planejamento de Mergulho</h1>
-                    <p class="subtitle">Calculadora Baseada nas Tabelas da NOAA</p>
+                    <p class="subtitle">Corpo de Bombeiros Militar de Minas Gerais</p>
                 </div>
             </div>
         </div>
@@ -76,12 +85,12 @@
 
                 <div class="campo">
                     <label for="horaDF1">DF — Deixa o fundo</label>
-                    <input id="horaDF1" type="time" />
+                    <input id="horaDF1" type="time" value="12:30" />
                 </div>
 
                 <div class="campo">
                     <label for="horaCS1">CS — Chegada à superfície</label>
-                    <input id="horaCS1" type="time" />
+                    <input id="horaCS1" type="time" value="12:32" />
                 </div>
             </div>
 
@@ -104,17 +113,17 @@
             <div class="grid grid-3">
                 <div class="campo">
                     <label for="intervaloSuperficie">Intervalo de superfície (minutos)</label>
-                    <input id="intervaloSuperficie" type="number" min="0" step="1" placeholder="Ex: 60" />
+                    <input id="intervaloSuperficie" type="number" min="0" step="1" value="60" placeholder="Ex: 60" />
                 </div>
 
                 <div class="campo">
                     <label for="horaInicioIntervalo">Hora de início do intervalo</label>
-                    <input id="horaInicioIntervalo" type="time" />
+                    <input id="horaInicioIntervalo" type="time" value="12:32" />
                 </div>
 
                 <div class="campo">
                     <label for="horaFinalIntervalo">Hora final do intervalo</label>
-                    <input id="horaFinalIntervalo" type="time" />
+                    <input id="horaFinalIntervalo" type="time" value="13:32" />
                 </div>
             </div>
         </section>
@@ -129,12 +138,12 @@
             <div class="grid">
                 <div class="campo">
                     <label for="profundidadeReal2">Profundidade real (metros)</label>
-                    <input id="profundidadeReal2" type="number" min="0" step="1" />
+                    <input id="profundidadeReal2" type="number" min="0" step="1" value="15" />
                 </div>
 
                 <div class="campo">
                     <label for="tempoFundo2">Tempo de fundo (minutos)</label>
-                    <input id="tempoFundo2" type="number" min="0" step="1" />
+                    <input id="tempoFundo2" type="number" min="0" step="1" value="25" />
                 </div>
 
                 <div class="campo">
@@ -147,22 +156,22 @@
 
                 <div class="campo">
                     <label for="horaInicio2">DS — Início do 2º Mergulho</label>
-                    <input id="horaInicio2" type="time" />
+                    <input id="horaInicio2" type="time" value="13:32" />
                 </div>
 
                 <div class="campo">
                     <label for="horaCF2">CF — Chegada ao fundo</label>
-                    <input id="horaCF2" type="time" />
+                    <input id="horaCF2" type="time" value="13:34" />
                 </div>
 
                 <div class="campo">
                     <label for="horaDF2">DF — Deixa o fundo</label>
-                    <input id="horaDF2" type="time" />
+                    <input id="horaDF2" type="time" value="13:59" />
                 </div>
 
                 <div class="campo">
                     <label for="horaCS2">CS — Chegada à superfície</label>
-                    <input id="horaCS2" type="time" />
+                    <input id="horaCS2" type="time" value="14:01" />
                 </div>
             </div>
 
@@ -298,7 +307,7 @@
 
             <div class="card-actions nao-imprimir" style="margin-bottom: 24px;">
                 <button id="btnGerarPlano" type="button" class="btn-secondary">
-                    Visualizar Apêndice C
+                    Atualizar Gráficos
                 </button>
                 <button id="btnExportarPDF" type="button" class="btn-secondary">
                     Exportar PDF
@@ -309,14 +318,7 @@
             </div>
 
             <div class="document-scroll-viewport">
-                <div id="planoMergulho" class="document-paper-mockup">
-                    <div class="empty-state">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="empty-state-icon">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <p>Preencha os cálculos acima e clique em "Visualizar Apêndice C" para gerar o documento oficial.</p>
-                    </div>
-                </div>
+                <div id="planoMergulho" class="document-paper-mockup"></div>
             </div>
         </section>
     </main>
@@ -327,5 +329,83 @@
 
     <script src="anexos-a-b.js"></script>
     <script src="app.js"></script>
+
+    <!-- PWA Installation Script -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('SW registrado em: ', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('Falha de Service Worker:', error);
+                    });
+            });
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+
+        function showInstallButton() {
+            if (document.getElementById('installBtn')) return;
+            
+            const installBtn = document.createElement('button');
+            installBtn.id = 'installBtn';
+            installBtn.innerHTML = '<i class="fas fa-download"></i> Instalar App';
+            installBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 24px;
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                color: white;
+                border: 1px solid var(--primary-dark);
+                border-radius: 50px;
+                font-size: 13px;
+                font-weight: bold;
+                font-family: inherit;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(190, 18, 60, 0.4);
+                z-index: 10000;
+                transition: transform 0.2s, box-shadow 0.2s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            `;
+
+            installBtn.addEventListener('mouseenter', () => {
+                installBtn.style.transform = 'scale(1.05) translateY(-2px)';
+            });
+
+            installBtn.addEventListener('mouseleave', () => {
+                installBtn.style.transform = 'scale(1)';
+            });
+
+            installBtn.addEventListener('click', installPWA);
+            document.body.appendChild(installBtn);
+        }
+
+        async function installPWA() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`Instalação PWA: ${outcome}`);
+            deferredPrompt = null;
+            const btn = document.getElementById('installBtn');
+            if (btn) btn.remove();
+        }
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA instalado.');
+            deferredPrompt = null;
+            const btn = document.getElementById('installBtn');
+            if (btn) btn.remove();
+        });
+    </script>
 </body>
 </html>
