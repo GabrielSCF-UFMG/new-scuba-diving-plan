@@ -7,7 +7,8 @@ const FILES_TO_CACHE = [
     './app.js',
     './anexos-a-b.js',
     './manifest.json',
-    './brasao-cbmmg.png'
+    './brasao-cbmmg-192.png',
+    './brasao-cbmmg-512.png'
 ];
 
 self.addEventListener('install', (event) => {
