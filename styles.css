@@ -647,3 +647,29 @@ tr:last-child td {
     color: #000000 !important;
   }
 }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 28px auto 20px;
+  padding: 18px 24px;
+  text-align: center;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer p {
+  margin: 4px 0;
+}
+
+.footer p:last-child {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
